@@ -1,0 +1,535 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800;900&family=Fira+Code:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Custom scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #6C63FF; border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: #8877ff; }
+
+/* ── Base styles ── */
+@layer base {
+  * { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    @apply bg-dark-900 text-gray-100 font-sans antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .light body {
+    @apply bg-gray-50 text-gray-900;
+  }
+}
+
+/* ── Utility classes ── */
+@layer utilities {
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-light {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #6C63FF 0%, #00D9FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-border {
+    position: relative;
+    background: linear-gradient(135deg, rgba(108,99,255,0.1), rgba(0,217,255,0.1));
+    border: 1px solid transparent;
+    background-clip: padding-box;
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, #6C63FF, #00D9FF);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  .section-padding {
+    @apply py-20 px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-max {
+    @apply max-w-7xl mx-auto;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 30px rgba(108, 99, 255, 0.5);
+  }
+
+  .box-glow {
+    box-shadow: 0 0 40px rgba(108, 99, 255, 0.15);
+  }
+
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(108, 99, 255, 0.3);
+  }
+}
+
+/* ── Animated cursor ── */
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: #6C63FF;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s ease;
+}
+
+.cursor-outline {
+  width: 36px;
+  height: 36px;
+  border: 2px solid rgba(108, 99, 255, 0.6);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transition: all 0.15s ease;
+}
+
+/* ── Blob animations ── */
+.blob {
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  animation: blob-morph 8s ease-in-out infinite;
+}
+
+@keyframes blob-morph {
+  0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+  25% { border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%; }
+  50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
+  75% { border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%; }
+}
+
+/* ── Particle dots ── */
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(108, 99, 255, 0.6);
+  animation: particle-float linear infinite;
+}
+
+@keyframes particle-float {
+  0% { transform: translateY(100vh) scale(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-100px) scale(1); opacity: 0; }
+}
+
+/* ── Nav link underline ── */
+.nav-link::after {
+  content: '';
+  display: block;
+  height: 2px;
+  background: linear-gradient(90deg, #6C63FF, #00D9FF);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+  border-radius: 2px;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ── Typewriter cursor ── */
+.Typewriter__cursor {
+  color: #6C63FF !important;
+  font-weight: 300;
+}
+
+/* ── Skill bar ── */
+.skill-bar-fill {
+  height: 100%;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #6C63FF, #00D9FF);
+  transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-bar-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  100% { left: 100%; }
+}
+
+/* ── Section reveal ── */
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal-shown {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ══════════════════════════════════════════
+   ── LIGHT THEME — comprehensive overrides ──
+   ══════════════════════════════════════════ */
+
+/* ── Variables & body ── */
+html.light {
+  --bg-primary: #f5f4ff;
+  --bg-secondary: #eceaff;
+  --bg-card: #ffffff;
+  --border-subtle: rgba(108, 99, 255, 0.14);
+  color-scheme: light;
+}
+
+html.light body {
+  background-color: #f5f4ff;
+  color: #16152e;
+}
+
+/* ── Scrollbar in light mode ── */
+html.light ::-webkit-scrollbar-track { background: #eceaff; }
+
+/* ── Selection color ── */
+html.light ::selection {
+  background: rgba(108, 99, 255, 0.2);
+  color: #16152e;
+}
+
+/* ─────────────────────────────────────────
+   GLASS / CARD SURFACES
+───────────────────────────────────────── */
+html.light .glass {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(108, 99, 255, 0.14) !important;
+  box-shadow: 0 2px 20px rgba(108, 99, 255, 0.07);
+}
+
+/* ─────────────────────────────────────────
+   TEXT — override Tailwind hardcoded colors
+───────────────────────────────────────── */
+/* text-white  →  rich dark navy */
+html.light .text-white {
+  color: #16152e !important;
+}
+
+/* text-gray-100 / 200 / 300  →  dark */
+html.light .text-gray-100 { color: #1e1c38 !important; }
+html.light .text-gray-200 { color: #2d2b4e !important; }
+html.light .text-gray-300 { color: #3c3a62 !important; }
+
+/* text-gray-400  →  medium slate (body text) */
+html.light .text-gray-400 { color: #5b587e !important; }
+
+/* text-gray-500  →  muted (secondary text) */
+html.light .text-gray-500 { color: #8280a8 !important; }
+
+/* text-gray-600 / 700  →  visible on white */
+html.light .text-gray-600 { color: #6c6990 !important; }
+html.light .text-gray-700 { color: #4a4875 !important; }
+
+/* Hero name "Vishwas" — currently text-white on dark bg  */
+html.light .text-glow {
+  color: #16152e !important;
+  text-shadow: none;
+}
+
+/* ─────────────────────────────────────────
+   BACKGROUNDS — dark bg utilities → light
+───────────────────────────────────────── */
+/* bg-white/5, /10 backgrounds (cards, inputs) */
+html.light [class*="bg-white/"] {
+  background-color: rgba(108, 99, 255, 0.05) !important;
+}
+
+/* bg-dark-* → light equivalents */
+html.light [class*="bg-dark-"] {
+  background-color: #f5f4ff !important;
+}
+
+/* bg-gray-800, bg-gray-900 remnants */
+html.light .bg-gray-800 { background-color: #edeaff !important; }
+html.light .bg-gray-900 { background-color: #f5f4ff !important; }
+
+/* ─────────────────────────────────────────
+   BORDERS — white/5, white/10 → visible
+───────────────────────────────────────── */
+html.light [class*="border-white/"] {
+  border-color: rgba(108, 99, 255, 0.15) !important;
+}
+
+/* ─────────────────────────────────────────
+   SECTION BACKGROUNDS
+───────────────────────────────────────── */
+html.light section {
+  background-color: transparent;
+}
+
+/* Alternating section tint for rhythm */
+html.light #skills,
+html.light #resume {
+  background-color: rgba(108, 99, 255, 0.03);
+}
+
+/* Hero section — subtle warm gradient */
+html.light #hero {
+  background: linear-gradient(135deg, #f5f4ff 0%, #ede9ff 50%, #f0f4ff 100%);
+}
+
+/* ─────────────────────────────────────────
+   NAVBAR
+───────────────────────────────────────── */
+html.light nav.glass,
+html.light nav[class*="glass"] {
+  background: rgba(245, 244, 255, 0.9) !important;
+  border-bottom: 1px solid rgba(108, 99, 255, 0.12) !important;
+  box-shadow: 0 4px 24px rgba(108, 99, 255, 0.08) !important;
+}
+
+/* ─────────────────────────────────────────
+   FORM INPUTS
+───────────────────────────────────────── */
+html.light input,
+html.light textarea {
+  background-color: #ffffff !important;
+  border-color: rgba(108, 99, 255, 0.2) !important;
+  color: #16152e !important;
+}
+
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #a8a6c8 !important;
+}
+
+html.light input:focus,
+html.light textarea:focus {
+  background-color: rgba(108, 99, 255, 0.04) !important;
+  border-color: rgba(108, 99, 255, 0.45) !important;
+}
+
+/* ─────────────────────────────────────────
+   SKILL BARS background track
+───────────────────────────────────────── */
+html.light .h-2.bg-white\/5 {
+  background-color: rgba(108, 99, 255, 0.1) !important;
+}
+
+/* ─────────────────────────────────────────
+   TECH TAGS & PILLS  (bg-primary-500/10)
+───────────────────────────────────────── */
+html.light [class*="bg-primary-500/10"] {
+  background-color: rgba(108, 99, 255, 0.1) !important;
+}
+html.light [class*="bg-primary-500/20"] {
+  background-color: rgba(108, 99, 255, 0.15) !important;
+}
+
+/* ─────────────────────────────────────────
+   STATUS BADGES (green / yellow)
+───────────────────────────────────────── */
+html.light [class*="bg-green-500/10"] {
+  background-color: rgba(34, 197, 94, 0.12) !important;
+}
+html.light [class*="bg-yellow-500/10"] {
+  background-color: rgba(234, 179, 8, 0.12) !important;
+}
+html.light [class*="bg-yellow-500/5"] {
+  background-color: rgba(234, 179, 8, 0.08) !important;
+}
+
+/* ─────────────────────────────────────────
+   PROJECT CARD footer separator
+───────────────────────────────────────── */
+html.light .border-t.border-white\/5 {
+  border-top-color: rgba(108, 99, 255, 0.12) !important;
+}
+
+/* ─────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────── */
+html.light footer {
+  background-color: #ede9ff;
+  border-top-color: rgba(108, 99, 255, 0.15) !important;
+}
+
+/* ─────────────────────────────────────────
+   MOBILE MENU drawer
+───────────────────────────────────────── */
+html.light [role="dialog"].glass {
+  background: rgba(245, 244, 255, 0.97) !important;
+}
+
+/* Mobile nav links (dark-mode uses text-gray-300 / hover:text-white) */
+html.light [role="dialog"] button {
+  color: #5b587e;
+}
+html.light [role="dialog"] button:hover {
+  color: #16152e;
+  background-color: rgba(108, 99, 255, 0.07);
+}
+
+/* ─────────────────────────────────────────
+   HERO SPECIFIC
+───────────────────────────────────────── */
+/* Particles — make them more visible on light bg */
+html.light .particle {
+  background: rgba(108, 99, 255, 0.35) !important;
+}
+
+/* Grid overlay — slightly more visible */
+html.light #hero > div[aria-hidden="true"][style] {
+  opacity: 0.06 !important;
+}
+
+/* Scroll indicator */
+html.light .text-gray-500.hover\:text-primary-400 {
+  color: #8280a8;
+}
+
+/* ─────────────────────────────────────────
+   ABOUT — timeline connector
+───────────────────────────────────────── */
+html.light .timeline-item:not(:last-child)::before {
+  opacity: 0.25;
+}
+
+/* ─────────────────────────────────────────
+   BOX GLOW / HOVER LIFT SHADOW
+───────────────────────────────────────── */
+html.light .hover-lift:hover {
+  box-shadow: 0 20px 50px rgba(108, 99, 255, 0.18) !important;
+}
+
+html.light .box-glow {
+  box-shadow: 0 0 40px rgba(108, 99, 255, 0.1) !important;
+}
+
+/* ─────────────────────────────────────────
+   RESUME CARD  header gradient band
+───────────────────────────────────────── */
+html.light .bg-gradient-to-br.from-primary-500\/20 {
+  background: linear-gradient(135deg, rgba(108,99,255,0.1), rgba(0,217,255,0.07)) !important;
+  border-bottom-color: rgba(108,99,255,0.12) !important;
+}
+
+/* ─────────────────────────────────────────
+   SKILL BAR TRACK (inline class combo)
+───────────────────────────────────────── */
+html.light [class~="bg-white/5"][class~="rounded-full"] {
+  background-color: rgba(108, 99, 255, 0.1) !important;
+}
+
+/* ─────────────────────────────────────────
+   PROJECT "Show More" button  bg-gray-800/50
+───────────────────────────────────────── */
+html.light [class*="bg-gray-800/"] {
+  background-color: rgba(108, 99, 255, 0.08) !important;
+  color: #8280a8 !important;
+}
+
+/* ── Timeline connector ── */
+.timeline-item:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 19px;
+  top: 40px;
+  bottom: -20px;
+  width: 2px;
+  background: linear-gradient(to bottom, #6C63FF, #00D9FF);
+  opacity: 0.4;
+}
+
+/* ── Project card image overlay ── */
+.project-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(108,99,255,0.95), rgba(0,217,255,0.95));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  border-radius: inherit;
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+/* ── Testimonial slider dots ── */
+.swiper-pagination-bullet {
+  background: #6C63FF !important;
+  opacity: 0.4;
+}
+.swiper-pagination-bullet-active {
+  opacity: 1 !important;
+  background: linear-gradient(90deg, #6C63FF, #00D9FF) !important;
+}
+
+/* ── Focus styles for accessibility ── */
+*:focus-visible {
+  outline: 2px solid #6C63FF;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* ── Selection color ── */
+::selection {
+  background: rgba(108, 99, 255, 0.3);
+  color: #fff;
+}
+
+/* ── Loading spinner ── */
+@keyframes spin-glow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.spinner {
+  border: 3px solid rgba(108, 99, 255, 0.2);
+  border-top-color: #6C63FF;
+  border-radius: 50%;
+  animation: spin-glow 0.8s linear infinite;
+}
