@@ -1,7 +1,5 @@
 # Vishwas Gupta — Data Engineer & AI Developer Portfolio
 
-![Portfolio Preview](./public/vite.svg) *(Replace with actual banner if available)*
-
 Welcome to the open-source repository for my professional portfolio! I am a **Data Engineer & AI Developer** specializing in enterprise-grade Medallion Architecture data pipelines, Microsoft Fabric, Copilot Studio AI Agents, and YOLO-based computer vision.
 
 This portfolio is built with modern, high-performance web technologies, delivering a sleek, fully responsive, and highly interactive user experience (including a dynamic Light/Dark mode).
