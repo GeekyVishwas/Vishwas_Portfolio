@@ -17,11 +17,29 @@ const navLinks = [
 
 export function Navbar({ isDark, toggleTheme }) {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const activeSection = useScrollSpy(navLinks.map(l => l.id), 120);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    let lastScrollY = window.scrollY;
+
+    const onScroll = () => {
+      const currentScrollY = window.scrollY;
+      setScrolled(currentScrollY > 20);
+
+      // Hide navbar if scrolling down and past 100px. Show if scrolling up.
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setHidden(true);
+        // Also close mobile menu if scrolling down
+        setMenuOpen(false);
+      } else {
+        setHidden(false);
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -36,11 +54,11 @@ export function Navbar({ isDark, toggleTheme }) {
     <>
       <motion.nav
         initial={{ y: -80, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        animate={{ y: hidden ? -100 : 0, opacity: hidden ? 0 : 1 }}
+        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled ? 'nav-glass shadow-lg shadow-black/20' : 'bg-transparent'
-        }`}
+        } ${hidden ? 'pointer-events-none' : ''}`}
         role="navigation"
         aria-label="Main navigation"
       >
