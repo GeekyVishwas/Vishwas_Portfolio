@@ -26,7 +26,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative py-12 px-4 border-t border-white/5 overflow-hidden">
+    <footer className="relative pt-12 pb-6 px-4 border-t border-white/5 overflow-hidden">
       {/* Background glow */}
       <div className="absolute inset-0 bg-gradient-to-t from-primary-900/20 to-transparent pointer-events-none" />
 
@@ -82,7 +82,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/5 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="border-t border-white/5 pt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
           <p className="text-gray-600 text-sm flex items-center gap-1">
             Made with <Heart size={12} className="text-red-500 fill-red-500 mx-1" /> by Vishwas Gupta &copy; {new Date().getFullYear()}
           </p>
