@@ -148,7 +148,7 @@ export const timeline = [
     color: 'from-blue-400 to-primary-500',
   },
   {
-    year: '2024',
+    year: '2025',
     title: 'IBM AI Developer Specialization',
     org: 'IBM / Coursera',
     description: 'Completed IBM AI Developer Specialization covering Generative AI, Deep Learning, and FastAPI deployment.',

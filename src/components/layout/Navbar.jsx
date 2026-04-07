@@ -39,7 +39,7 @@ export function Navbar({ isDark, toggleTheme }) {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? 'glass shadow-lg shadow-black/20' : 'bg-transparent'
+          scrolled ? 'nav-glass shadow-lg shadow-black/20' : 'bg-transparent'
         }`}
         role="navigation"
         aria-label="Main navigation"
@@ -119,7 +119,7 @@ export function Navbar({ isDark, toggleTheme }) {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-y-0 right-0 z-40 w-72 glass shadow-2xl md:hidden"
+            className="fixed inset-y-0 right-0 z-40 w-72 drawer-glass shadow-2xl md:hidden"
             role="dialog"
             aria-label="Mobile navigation menu"
           >

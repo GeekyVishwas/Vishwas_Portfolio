@@ -41,6 +41,20 @@
     border: 1px solid rgba(255, 255, 255, 0.3);
   }
 
+  .nav-glass {
+    background: rgba(22, 21, 46, 0.75);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .drawer-glass {
+    background: rgba(22, 21, 46, 0.96);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
   .gradient-text {
     background: linear-gradient(135deg, #6C63FF 0%, #00D9FF 100%);
     -webkit-background-clip: text;
@@ -320,8 +334,11 @@ html.light #hero {
    NAVBAR
 ───────────────────────────────────────── */
 html.light nav.glass,
-html.light nav[class*="glass"] {
-  background: rgba(245, 244, 255, 0.9) !important;
+html.light nav[class*="glass"],
+html.light .nav-glass {
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid rgba(108, 99, 255, 0.12) !important;
   box-shadow: 0 4px 24px rgba(108, 99, 255, 0.08) !important;
 }
@@ -395,8 +412,12 @@ html.light footer {
 /* ─────────────────────────────────────────
    MOBILE MENU drawer
 ───────────────────────────────────────── */
-html.light [role="dialog"].glass {
+html.light [role="dialog"].glass,
+html.light .drawer-glass {
   background: rgba(245, 244, 255, 0.97) !important;
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-left: 1px solid rgba(108, 99, 255, 0.12) !important;
 }
 
 /* Mobile nav links (dark-mode uses text-gray-300 / hover:text-white) */

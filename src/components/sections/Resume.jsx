@@ -24,7 +24,7 @@ export function Resume() {
         {/* Download CTA */}
         <ScrollReveal className="flex justify-center mb-12">
           <a
-            href="https://geekyvishwas.github.io/Portfolio/"
+            href="https://geekyvishwas.github.io/Vishwas_Portfolio/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-primary-500 to-cyan-400 text-white font-semibold hover:opacity-90 hover:scale-105 transition-all duration-200 shadow-xl shadow-primary-500/30"
