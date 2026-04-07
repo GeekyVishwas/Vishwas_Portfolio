@@ -86,9 +86,7 @@ export function Footer() {
           <p className="text-gray-600 text-sm flex items-center gap-1">
             Made with <Heart size={12} className="text-red-500 fill-red-500 mx-1" /> by Vishwas Gupta &copy; {new Date().getFullYear()}
           </p>
-          <p className="text-gray-700 text-xs font-mono">
-            Built with React + Vite + Framer Motion
-          </p>
+
         </div>
       </div>
     </footer>
