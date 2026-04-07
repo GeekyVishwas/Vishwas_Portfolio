@@ -137,7 +137,7 @@ export function Hero() {
             Contact Me
           </button>
           <a
-            href="https://drive.google.com/file/d/1w9bt2Yncsv9W7-6UC8O0mZ6BHuyxGkoS/view?usp=sharing"
+            href="https://drive.google.com/file/d/1kdH6CogzhZLPYvaoyUm0pH6DtWBOFeM1/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-gray-400 hover:text-white font-semibold text-base transition-all duration-200"
