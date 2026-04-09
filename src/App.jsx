@@ -40,28 +40,44 @@ function App() {
 
       <Footer />
 
-      {/* Scroll to top button */}
-      <ScrollToTop />
+      {/* Scroll arrows */}
+      <ScrollButtons />
     </div>
   );
 }
 
-function ScrollToTop() {
+function ScrollButtons() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+  const scrollToBottom = () => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 
   return (
-    <motion.button
-      initial={{ opacity: 0, scale: 0 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ delay: 2 }}
-      onClick={scrollToTop}
-      className="fixed bottom-6 right-6 z-40 w-11 h-11 rounded-xl bg-gradient-to-br from-primary-500 to-cyan-400 flex items-center justify-center text-white shadow-lg shadow-primary-500/30 hover:scale-110 transition-transform duration-200"
-      aria-label="Scroll to top"
-    >
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="18 15 12 9 6 15" />
-      </svg>
-    </motion.button>
+    <div className="fixed bottom-6 right-6 z-40 flex flex-col gap-3">
+      <motion.button
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 2 }}
+        onClick={scrollToTop}
+        className="w-11 h-11 rounded-xl bg-gradient-to-br from-primary-500 to-cyan-400 flex items-center justify-center text-white shadow-lg shadow-primary-500/30 hover:scale-110 transition-transform duration-200"
+        aria-label="Scroll to top"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="18 15 12 9 6 15" />
+        </svg>
+      </motion.button>
+
+      <motion.button
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 2.1 }}
+        onClick={scrollToBottom}
+        className="w-11 h-11 rounded-xl bg-gradient-to-br from-primary-500 to-cyan-400 flex items-center justify-center text-white shadow-lg shadow-primary-500/30 hover:scale-110 transition-transform duration-200"
+        aria-label="Scroll to bottom"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </motion.button>
+    </div>
   );
 }
 
