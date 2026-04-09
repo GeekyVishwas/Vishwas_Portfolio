@@ -70,7 +70,7 @@ ${form.message}
 
       setStatus('success');
       setForm({ name: '', email: '', phone: '', subject: '', message: '' });
-      
+
       // Reset success message after 5 seconds
       setTimeout(() => setStatus(null), 5000);
     } catch (error) {
