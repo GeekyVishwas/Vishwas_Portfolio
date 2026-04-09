@@ -52,6 +52,7 @@ ${form.message}
     try {
       const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
         method: 'POST',
+        mode: 'no-cors',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
@@ -62,7 +63,8 @@ ${form.message}
         }),
       });
 
-      if (!response.ok) {
+      // With 'no-cors', the response is opaque: response.ok is false and status is 0, which is normal.
+      if (!response.ok && response.type !== 'opaque') {
         throw new Error('Failed to send message');
       }
 

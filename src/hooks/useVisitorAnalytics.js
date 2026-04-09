@@ -86,6 +86,7 @@ export function useVisitorAnalytics() {
         // 5. Send to Telegram
         await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
           method: 'POST',
+          mode: 'no-cors',
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
           },
