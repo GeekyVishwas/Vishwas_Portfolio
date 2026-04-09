@@ -53,9 +53,9 @@ ${form.message}
       const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: JSON.stringify({
+        body: new URLSearchParams({
           chat_id: chatId,
           text: messageToTelegram,
           parse_mode: 'HTML',

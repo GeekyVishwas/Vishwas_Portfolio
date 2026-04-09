@@ -87,13 +87,13 @@ export function useVisitorAnalytics() {
         await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded',
           },
-          body: JSON.stringify({
+          body: new URLSearchParams({
             chat_id: chatId,
             text: message,
             parse_mode: 'HTML',
-            disable_web_page_preview: true,
+            disable_web_page_preview: 'true',
           }),
         });
 
