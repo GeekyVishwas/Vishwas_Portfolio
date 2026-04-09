@@ -6,7 +6,7 @@ import { Download, ArrowDown, ExternalLink, Mail } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 
-export function Hero() {
+export function Hero({ onOpenResume }) {
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -136,16 +136,14 @@ export function Hero() {
             <Mail size={16} />
             Contact Me
           </button>
-          <a
-            href="https://drive.google.com/file/d/1kdH6CogzhZLPYvaoyUm0pH6DtWBOFeM1/view?usp=sharing"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-gray-400 hover:text-white font-semibold text-base transition-all duration-200"
-            aria-label="View resume on Google Drive"
+          <button
+            onClick={onOpenResume}
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-gray-400 hover:text-white font-semibold text-base transition-all duration-200 hover:scale-105 active:scale-95"
+            aria-label="View my resume"
           >
             <Download size={16} />
             Resume
-          </a>
+          </button>
         </motion.div>
 
         {/* Social links */}

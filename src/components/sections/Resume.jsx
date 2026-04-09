@@ -6,7 +6,7 @@ import { resumeData } from '../../data/resume';
 import { Download, ExternalLink, Award, GraduationCap, Briefcase, Mail, Phone, MapPin } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
-export function Resume() {
+export function Resume({ onOpenResume }) {
   const { name, title, contact, summary, experience, education, certifications, achievements, skills } = resumeData;
 
   return (
@@ -23,16 +23,14 @@ export function Resume() {
 
         {/* Download CTA */}
         <ScrollReveal className="flex justify-center mb-12">
-          <a
-            href="https://geekyvishwas.github.io/Vishwas_Portfolio/"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={onOpenResume}
             className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-primary-500 to-cyan-400 text-white font-semibold hover:opacity-90 hover:scale-105 transition-all duration-200 shadow-xl shadow-primary-500/30"
-            aria-label="View full resume"
+            aria-label="View and download resume"
           >
-            <ExternalLink size={16} />
-            View Full Portfolio
-          </a>
+            <Download size={16} />
+            View &amp; Download Resume
+          </button>
         </ScrollReveal>
 
         {/* Resume card */}

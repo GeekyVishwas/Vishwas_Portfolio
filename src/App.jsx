@@ -1,4 +1,5 @@
 // App.jsx — Main app component
+import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useTheme } from './hooks/useTheme';
 import { useVisitorAnalytics } from './hooks/useVisitorAnalytics';
@@ -13,9 +14,11 @@ import { Experience } from './components/sections/Experience';
 import { Resume } from './components/sections/Resume';
 import { Testimonials } from './components/sections/Testimonials';
 import { Contact } from './components/sections/Contact';
+import { ResumeModal } from './components/ui/ResumeModal';
 
 function App() {
   const { isDark, toggleTheme } = useTheme();
+  const [resumeOpen, setResumeOpen] = useState(false);
   useVisitorAnalytics(); // Ping Telegram with visitor details on mount
 
   return (
@@ -28,17 +31,20 @@ function App() {
 
       {/* Page content */}
       <main>
-        <Hero />
+        <Hero onOpenResume={() => setResumeOpen(true)} />
         <About />
         <Skills />
         <Projects />
         <Experience />
-        <Resume />
+        <Resume onOpenResume={() => setResumeOpen(true)} />
         <Testimonials />
         <Contact />
       </main>
 
       <Footer />
+
+      {/* Resume popup modal */}
+      <ResumeModal isOpen={resumeOpen} onClose={() => setResumeOpen(false)} />
 
       {/* Scroll arrows */}
       <ScrollButtons />
